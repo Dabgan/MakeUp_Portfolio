@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Layout from '../components/layout'
-import Image from '../components/image'
-import SEO from '../components/seo'
+import Layout from '../components/layout/layout'
+import Image from '../components/image/image'
+import SEO from '../components/SEO/seo'
 
 const IndexPage: React.FunctionComponent = () => (
     <Layout>
@@ -14,7 +14,8 @@ const IndexPage: React.FunctionComponent = () => (
         <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
             <Image />
         </div>
-        <Link to="/page-2/">Go to page 2</Link> <br />
+        <Link to="/about/">Go to about</Link> <br />
+        <Link to="/contact/">Go to contact</Link> <br />
     </Layout>
 )
 

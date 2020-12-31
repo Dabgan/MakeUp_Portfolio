@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import mystyles from './header.module.scss'
 
 interface HeaderProps {
     siteTitle: string
@@ -7,6 +8,7 @@ interface HeaderProps {
 
 const Header: React.FunctionComponent<HeaderProps> = ({ siteTitle }) => (
     <header
+        className={mystyles.redish}
         style={{
             background: `rebeccapurple`,
             marginBottom: `1.45rem`,
