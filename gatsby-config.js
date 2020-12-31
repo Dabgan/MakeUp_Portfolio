@@ -18,13 +18,6 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
         `gatsby-plugin-sass`,
-        // {
-        //     resolve: `gatsby-plugin-sass`,
-        //     options: {
-        //         implementation: require('sass'),
-        //         data: `@use "src/styles/variables" as var;`,
-        //     },
-        // },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
