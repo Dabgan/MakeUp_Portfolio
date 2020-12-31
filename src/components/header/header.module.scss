@@ -1,9 +1,1 @@
 @import '../../assets/styles/variables';
-.red {
-    border: 12px solid $bgcolor;
-}
-
-.redish {
-    composes: red;
-    background-color: pink !important;
-}
