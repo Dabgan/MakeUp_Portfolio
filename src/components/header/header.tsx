@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FunctionComponent<HeaderProps> = ({ siteTitle }) => (
     <header
-        className={mystyles.redish}
+        className={mystyles.red}
         style={{
             background: `rebeccapurple`,
             marginBottom: `1.45rem`,
