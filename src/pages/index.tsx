@@ -8,7 +8,7 @@ import SEO from '../components/SEO/seo'
 const IndexPage: React.FunctionComponent = () => (
     <Layout>
         <SEO title="Home" />
-        <h1>Hello world</h1>
+        <h1>Hello worldDDDDDDDDD</h1>
         <p>Welcome to your new Gatsby site.</p>
         <p>Now go build something great.</p>
         <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
