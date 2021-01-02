@@ -1,16 +1,37 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Layout from '../components/layout/layout';
+import SEO from '../components/SEO/seo';
 
-import Layout from '../components/layout/layout'
-import SEO from '../components/SEO/seo'
+interface AboutDatoCms {
+    data: {
+        about: {
+            title: string;
+            description: string;
+        };
+    };
+}
 
-const AboutPage: React.FunctionComponent = () => (
-    <Layout>
-        <SEO title="About Page" />
-        <h1>Hi from the about page</h1>
-        <p>Welcome to about page</p>
-        <Link to="/">Go back to the homepage</Link>
-    </Layout>
-)
+const AboutPage: React.FC<AboutDatoCms> = ({ data }) => {
+    const { title, description } = data.about;
 
-export default AboutPage
+    return (
+        <Layout>
+            <SEO title="About Page" />
+            <h1>{title}</h1>
+            <p>{description}</p>
+
+            <Link to="/">Go back to the homepage</Link>
+        </Layout>
+    );
+};
+
+export const query = graphql`
+    query {
+        about: datoCmsAbout {
+            description
+            title
+        }
+    }
+`;
+export default AboutPage;

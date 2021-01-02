@@ -1,22 +1,59 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
 
-import Layout from '../components/layout/layout'
-import Image from '../components/image/image'
-import SEO from '../components/SEO/seo'
+import Layout from '../components/layout/layout';
+import SEO from '../components/SEO/seo';
 
-const IndexPage: React.FunctionComponent = () => (
-    <Layout>
-        <SEO title="Home" />
-        <h1>Hello worldDDDDDDDDD</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-            <Image />
-        </div>
-        <Link to="/about/">Go to about</Link> <br />
-        <Link to="/contact/">Go to contact</Link> <br />
-    </Layout>
-)
+interface Articles {
+    data: {
+        articles: {
+            edges: Array<{
+                node: {
+                    title: string;
+                    slug: string;
+                    id: string;
+                };
+            }>;
+        };
+    };
+}
 
-export default IndexPage
+const IndexPage: React.FunctionComponent<Articles> = ({ data }) => {
+    const { edges } = data.articles;
+
+    return (
+        <Layout>
+            <SEO title="Home" />
+            <h1>Hello worldDDDDDDDDD</h1>
+            <p>Welcome to your new Gatsby site.</p>
+            <p>Now go build something great.</p>
+            {edges.map(edge => {
+                const { id, slug, title } = edge.node;
+                return (
+                    <div key={id}>
+                        <Link to={slug}>{title}</Link>
+                        <br />
+                    </div>
+                );
+            })}
+            <Link to="/about/">Go to about</Link> <br />
+            <Link to="/contact/">Go to contact</Link> <br />
+        </Layout>
+    );
+};
+
+export default IndexPage;
+
+export const query = graphql`
+    query {
+        articles: allDatoCmsArticle {
+            edges {
+                node {
+                    title
+                    slug
+                    id
+                }
+            }
+        }
+    }
+`;
