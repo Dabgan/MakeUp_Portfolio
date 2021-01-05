@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
     siteMetadata: {
@@ -20,7 +20,9 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sass',
             options: {
-                data: `@import "./src/assets/styles/variables";`,
+                data: ` @import "./src/assets/styles/variables";
+                        @import "./src/assets/styles/mixins";
+                `,
             },
         },
         {
@@ -30,4 +32,4 @@ module.exports = {
             },
         },
     ],
-}
+};

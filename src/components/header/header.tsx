@@ -1,5 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import Navigation from '../navigation/Navigation';
 import mystyles from './header.module.scss';
 
 interface HeaderProps {
@@ -11,6 +12,7 @@ const Header: React.FunctionComponent<HeaderProps> = ({ siteTitle }) => (
         <h1>
             <Link to="/">{siteTitle}</Link>
         </h1>
+        <Navigation />
     </header>
 );
 
