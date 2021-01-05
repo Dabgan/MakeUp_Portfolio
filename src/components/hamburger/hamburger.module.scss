@@ -1,0 +1,28 @@
+.burger {
+    position: absolute;
+    right: 1.5rem;
+    transform: translate(0%, -50%);
+
+    @include flex-centered(column, space-around);
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1;
+
+    &:focus {
+        outline: none;
+    }
+
+    div {
+        width: 2rem;
+        height: 0.25rem;
+        background: $font-color;
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        position: relative;
+        transform-origin: 1px;
+    }
+}

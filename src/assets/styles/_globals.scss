@@ -14,6 +14,7 @@ body {
     font-size: 10px;
     background-color: $main-color;
     color: $font-color;
+    text-rendering: optimizeLegibility;
 }
 a {
     color: inherit;
