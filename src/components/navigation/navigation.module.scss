@@ -12,6 +12,9 @@
     &.open {
         transform: translate(0);
     }
+    @include media('desktop') {
+        border: 2px solid #069cc8;
+    }
 }
 
 .navItem {
