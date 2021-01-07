@@ -1,9 +1,12 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import { TransitionState } from 'gatsby-plugin-transition-link';
 
 import Header from '../header/header';
-import styles from './layout.module.scss';
 import Footer from '../footer/Footer';
+
+import styles from './layout.module.scss';
+import animation from './layoutAnimations.module.scss';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -20,14 +23,43 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         }
     `);
 
+    const setTransitionAnimation = (state: string) => {
+        switch (state) {
+            case 'entering':
+                return animation.entering;
+            case 'entered':
+                return animation.entered;
+            case 'exiting':
+                return animation.exiting;
+            case 'exited':
+                return animation.exited;
+            default:
+                break;
+        }
+    };
+
     return (
-        <>
-            <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-            <div className={styles.layout}>
-                <main>{children}</main>
-                <Footer></Footer>
-            </div>
-        </>
+        <TransitionState>
+            {({ transitionStatus }) => {
+                return (
+                    <>
+                        <Header
+                            siteTitle={data.site.siteMetadata?.title || `Title`}
+                        />
+                        <div className={styles.layout}>
+                            <main
+                                className={setTransitionAnimation(
+                                    transitionStatus
+                                )}
+                            >
+                                {children}
+                            </main>
+                            <Footer></Footer>
+                        </div>
+                    </>
+                );
+            }}
+        </TransitionState>
     );
 };
 

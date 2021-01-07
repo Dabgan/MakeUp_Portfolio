@@ -1,0 +1,18 @@
+$page-animation: opacity 700ms ease-out;
+
+.entering {
+    opacity: 0;
+    transition: $page-animation;
+}
+.entered {
+    opacity: 1;
+    transition: $page-animation;
+}
+.exiting {
+    opacity: 0;
+    transition: $page-animation;
+}
+.exited {
+    opacity: 0;
+    transition: $page-animation;
+}

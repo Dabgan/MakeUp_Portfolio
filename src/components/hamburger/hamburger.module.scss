@@ -1,8 +1,8 @@
 .burger {
     position: absolute;
     right: 1.5rem;
+    top: 50%;
     transform: translate(0%, -50%);
-
     @include flex-centered(column, space-around);
     width: 2rem;
     height: 2rem;
@@ -10,7 +10,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    z-index: 1;
+    margin-top: $margin;
+    z-index: 2;
 
     &:focus {
         outline: none;
@@ -24,5 +25,18 @@
         transition: all 0.3s linear;
         position: relative;
         transform-origin: 1px;
+    }
+
+    &.active {
+        :first-child {
+            transform: rotate(45deg);
+        }
+        :nth-child(2) {
+            opacity: 0;
+            transform: translate(10px);
+        }
+        :nth-child(3) {
+            transform: rotate(-45deg);
+        }
     }
 }
