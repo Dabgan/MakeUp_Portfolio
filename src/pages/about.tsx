@@ -1,5 +1,6 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+
 import Layout from '../components/layout/layout';
 import SEO from '../components/SEO/seo';
 
@@ -20,8 +21,6 @@ const AboutPage: React.FC<AboutDatoCms> = ({ data }) => {
             <SEO title="About Page" />
             <h1>{title}</h1>
             <p>{description}</p>
-
-            <Link to="/">Go back to the homepage</Link>
         </Layout>
     );
 };

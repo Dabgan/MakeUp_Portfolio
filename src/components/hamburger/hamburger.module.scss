@@ -1,8 +1,6 @@
 .burger {
-    position: absolute;
+    position: fixed;
     right: 1.5rem;
-    top: 50%;
-    transform: translate(0%, -50%);
     @include flex-centered(column, space-around);
     width: 2rem;
     height: 2rem;
@@ -10,12 +8,7 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    margin-top: $margin;
     z-index: 2;
-
-    &:focus {
-        outline: none;
-    }
 
     div {
         width: 2rem;
@@ -25,6 +18,10 @@
         transition: all 0.3s linear;
         position: relative;
         transform-origin: 1px;
+    }
+
+    &:focus {
+        outline: none;
     }
 
     &.active {
