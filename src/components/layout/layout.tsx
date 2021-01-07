@@ -42,11 +42,11 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         <TransitionState>
             {({ transitionStatus }) => {
                 return (
-                    <>
+                    <div className={styles.wrapper}>
                         <Header
                             siteTitle={data.site.siteMetadata?.title || `Title`}
                         />
-                        <div className={styles.layout}>
+                        <div className={styles.container}>
                             <main
                                 className={setTransitionAnimation(
                                     transitionStatus
@@ -56,7 +56,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
                             </main>
                             <Footer></Footer>
                         </div>
-                    </>
+                    </div>
                 );
             }}
         </TransitionState>

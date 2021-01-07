@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useMediaQuery } from '@react-hook/media-query';
+
 import Hamburger from '../hamburger/Hamburger';
 import NavigationLink from './NavigationLink';
 
@@ -25,6 +27,28 @@ const menuItems = [
 
 const Navigation: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [tweenLength, setTweenLength] = useState({
+        entryLength: 0.35,
+        delay: 0.2,
+        exitLength: 0.5,
+    });
+    const matched = useMediaQuery('(min-width: 1200px)');
+
+    useEffect(() => {
+        const calculateTween = matched
+            ? {
+                  entryLength: 0.2,
+                  delay: 0,
+                  exitLength: 0.2,
+              }
+            : {
+                  entryLength: 0.35,
+                  delay: 0.2,
+                  exitLength: 0.5,
+              };
+
+        setTweenLength(calculateTween);
+    }, [matched]);
 
     const handleMenu = () => {
         setMenuOpen(prev => !prev);
@@ -42,6 +66,7 @@ const Navigation: React.FC = () => {
                             item={item}
                             isActive={location.pathname === item.path}
                             toggleMenu={handleMenu}
+                            tweenLength={tweenLength}
                         />
                     );
                 })}

@@ -21,6 +21,7 @@ const Portfolio: React.FC<Articles> = ({ data }) => {
     return (
         <Layout>
             <div>
+                <h1>Portfolio</h1>
                 <p>Now go build something great.</p>
                 {edges.map(edge => {
                     const { id, slug, title } = edge.node;

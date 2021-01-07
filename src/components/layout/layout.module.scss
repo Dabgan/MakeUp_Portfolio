@@ -1,6 +1,11 @@
-.layout {
-    min-height: calc(100vh - 50px);
+.wrapper {
+    @include flex-centered(column);
+}
+
+.container {
     width: 100%;
-    max-width: $content-width;
     padding: 0 $padding-mobile;
+    @include media('desktop') {
+        max-width: $content-width;
+    }
 }

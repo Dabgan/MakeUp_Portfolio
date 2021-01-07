@@ -1,3 +1,8 @@
+.navbar {
+    width: 100%;
+    max-width: $content-width;
+}
+
 .navList {
     @include flex-centered(column);
     width: 100%;
@@ -13,7 +18,11 @@
         transform: translate(0);
     }
     @include media('desktop') {
-        border: 2px solid #069cc8;
+        transform: translate(0);
+        @include flex-centered(row, flex-start);
+        height: auto;
+        position: static;
+        padding: $padding-mobile;
     }
 }
 
@@ -27,5 +36,9 @@
         color: $secondary-color;
         font-weight: 900;
         text-shadow: 3px 3px 13px $font-color;
+    }
+    @include media('desktop') {
+        font-size: $font-size-s;
+        margin: 0 $margin-l 0 0;
     }
 }

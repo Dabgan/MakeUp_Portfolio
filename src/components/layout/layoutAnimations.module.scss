@@ -1,18 +1,26 @@
 $page-animation: opacity 700ms ease-out;
+$page-animation-desktop: opacity 300ms ease-out;
+
+@mixin desktopAnimation() {
+    transition: $page-animation;
+    @include media('desktop') {
+        transition: $page-animation-desktop;
+    }
+}
 
 .entering {
     opacity: 0;
-    transition: $page-animation;
+    @include desktopAnimation();
 }
 .entered {
     opacity: 1;
-    transition: $page-animation;
+    @include desktopAnimation();
 }
 .exiting {
     opacity: 0;
-    transition: $page-animation;
+    @include desktopAnimation();
 }
 .exited {
     opacity: 0;
-    transition: $page-animation;
+    @include desktopAnimation();
 }

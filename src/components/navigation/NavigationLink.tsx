@@ -10,26 +10,33 @@ interface LinkProps {
     };
     isActive: boolean;
     toggleMenu: () => void;
+    tweenLength: {
+        entryLength: number;
+        delay: number;
+        exitLength: number;
+    };
 }
 
 const NavigationLink: React.FC<LinkProps> = ({
     item,
     isActive,
     toggleMenu,
+    tweenLength,
 }) => {
     const { path, name } = item;
+    const { entryLength, delay, exitLength } = tweenLength;
 
     return (
         <Link
             className={`${styled.navItem} ${isActive ? styled.active : ''}`}
             to={path}
-            exit={{
-                length: 0.5,
-                trigger: () => toggleMenu(),
-            }}
             entry={{
-                delay: 0.35,
-                length: 0.2,
+                delay,
+                length: entryLength,
+            }}
+            exit={{
+                length: exitLength,
+                trigger: () => toggleMenu(),
             }}
         >
             {name}
