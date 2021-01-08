@@ -27,6 +27,7 @@ const menuItems = [
 
 const Navigation: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [locationPath, setLocationPath] = useState('');
     const [tweenLength, setTweenLength] = useState({
         entryLength: 0.35,
         delay: 0.2,
@@ -42,13 +43,20 @@ const Navigation: React.FC = () => {
                   exitLength: 0.2,
               }
             : {
-                  entryLength: 0.35,
-                  delay: 0.2,
+                  entryLength: 0.3,
+                  delay: 0.3,
                   exitLength: 0.5,
               };
 
         setTweenLength(calculateTween);
     }, [matched]);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
+        setLocationPath(location.pathname);
+    }, []);
 
     const handleMenu = () => {
         setMenuOpen(prev => !prev);
@@ -64,7 +72,7 @@ const Navigation: React.FC = () => {
                         <NavigationLink
                             key={item.name}
                             item={item}
-                            isActive={location.pathname === item.path}
+                            isActive={locationPath === item.path}
                             toggleMenu={handleMenu}
                             tweenLength={tweenLength}
                         />
