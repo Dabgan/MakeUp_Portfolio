@@ -1,9 +1,8 @@
 import React from 'react';
+import Layout from '../components/layout/layout';
 import Hero from '../components/hero/Hero';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-
-import Layout from '../components/layout/layout';
 import SEO from '../components/SEO/seo';
 import Button from '../components/button/Button';
 

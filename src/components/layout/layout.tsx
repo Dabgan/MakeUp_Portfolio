@@ -1,11 +1,11 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { TransitionState } from 'gatsby-plugin-transition-link';
 
 import Header from '../header/header';
 import Footer from '../footer/Footer';
 
 import styles from './layout.module.scss';
+import { TransitionState } from 'gatsby-plugin-transition-link';
 import animation from './layoutAnimations.module.scss';
 
 interface LayoutProps {
