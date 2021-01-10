@@ -1,0 +1,8 @@
+.button {
+    border: 2px solid #069cc8;
+    border: 6px solid $gray;
+    background: inherit;
+    color: $gray;
+    padding: 0.5rem 3rem;
+    font-size: $font-size-xs;
+}
