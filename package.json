@@ -1,9 +1,8 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "makeup-portfolio",
+  "description": "Personal website made for make up artist Kinga Dąbrowska",
+  "version": "1.0.0",
+  "author": "Gabriel Danilu <gabriel.danilukk@gmail.com>",
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",
     "@react-hook/media-query": "^1.1.1",

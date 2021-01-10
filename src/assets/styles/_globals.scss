@@ -20,3 +20,18 @@ a {
     color: inherit;
     text-decoration: none;
 }
+
+.image {
+    width: 90%;
+    height: 100%;
+    @include media('tablet') {
+        display: none;
+    }
+}
+
+.title {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: 500;
+    margin: 0.5rem 0 0;
+}

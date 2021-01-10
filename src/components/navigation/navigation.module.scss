@@ -23,6 +23,7 @@
         height: auto;
         position: static;
         padding: $padding-mobile;
+        background: none;
     }
 }
 
@@ -34,7 +35,6 @@
     cursor: pointer;
     &.active {
         color: $secondary-color;
-        font-weight: 900;
         text-shadow: 3px 3px 13px $font-color;
     }
     @include media('desktop') {

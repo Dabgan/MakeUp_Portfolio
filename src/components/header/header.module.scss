@@ -1,8 +1,8 @@
 .header {
     @include flex-centered;
     width: 100%;
-    min-height: 50px;
+    min-height: 40px;
     @include media('desktop') {
-        margin-top: 10rem;
+        margin-top: 5rem;
     }
 }

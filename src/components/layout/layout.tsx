@@ -48,9 +48,9 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
                         />
                         <div className={styles.container}>
                             <main
-                                className={setTransitionAnimation(
-                                    transitionStatus
-                                )}
+                                className={`${
+                                    styles.main
+                                } ${setTransitionAnimation(transitionStatus)}`}
                             >
                                 {children}
                             </main>
