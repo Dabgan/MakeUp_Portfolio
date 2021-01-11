@@ -1,14 +1,12 @@
 import React from 'react';
 import Layout from '../components/layout/layout';
 import Hero from '../components/hero/Hero';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+
 import SEO from '../components/SEO/seo';
+import Image from '../components/image/Image';
 import Button from '../components/button/Button';
 
-const IndexPage: React.FunctionComponent = ({ data }) => {
-    const imageData = data.desktop.childImageSharp.fluid;
-
+const IndexPage: React.FunctionComponent = () => {
     return (
         <>
             <Hero>
@@ -17,11 +15,7 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
                     <h1 className="title">
                         Kinga Dąbrowska Superhero Make Up and XD
                     </h1>
-                    <Img
-                        className="image"
-                        fluid={imageData}
-                        imgStyle={{ objectFit: 'cover' }}
-                    />
+                    <Image />
                     <Button>Portfolio</Button>
                 </Layout>
             </Hero>
@@ -30,16 +24,3 @@ const IndexPage: React.FunctionComponent = ({ data }) => {
 };
 
 export default IndexPage;
-
-export const query = graphql`
-    query {
-        desktop: file(relativePath: { eq: "hero-mobile.jpg" }) {
-            childImageSharp {
-                fluid(quality: 90, maxWidth: 420) {
-                    ...GatsbyImageSharpFluid
-                    ...GatsbyImageSharpFluidLimitPresentationSize
-                }
-            }
-        }
-    }
-`;

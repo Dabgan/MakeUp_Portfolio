@@ -1,0 +1,7 @@
+.image {
+    width: 90%;
+    height: 100%;
+    @include media('tablet') {
+        display: none;
+    }
+}
