@@ -2,9 +2,9 @@ import React from 'react';
 import Img from 'gatsby-image';
 import { useStaticQuery, graphql } from 'gatsby';
 import { TransitionState } from 'gatsby-plugin-transition-link';
+import useTransitionState from '../../hooks/useTransitionState';
 
 import styles from './hero.module.scss';
-import animation from '../layout/layoutAnimations.module.scss';
 
 interface HeroProps {
     children: React.ReactNode;
@@ -30,21 +30,6 @@ const Hero: React.FC<HeroProps> = ({ children }) => {
         }
     `);
 
-    const setTransitionAnimation = (state: string) => {
-        switch (state) {
-            case 'entering':
-                return animation.entering;
-            case 'entered':
-                return animation.entered;
-            case 'exiting':
-                return animation.exiting;
-            case 'exited':
-                return animation.exited;
-            default:
-                break;
-        }
-    };
-
     const imagesStack = [
         {
             ...desktop.childImageSharp.fluid,
@@ -59,12 +44,9 @@ const Hero: React.FC<HeroProps> = ({ children }) => {
     return (
         <TransitionState>
             {({ transitionStatus }) => {
+                const tween = useTransitionState(transitionStatus);
                 return (
-                    <div
-                        className={`${styles.parent} ${setTransitionAnimation(
-                            transitionStatus
-                        )}`}
-                    >
+                    <div className={`${styles.parent} ${tween}`}>
                         <Img
                             className={styles.bgimage}
                             fluid={imagesStack}
