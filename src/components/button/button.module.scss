@@ -1,9 +1,23 @@
 .button {
-    border: 2px solid #069cc8;
     border: 6px solid $gray;
+    border-radius: $border-radius;
     background: inherit;
-    color: $gray;
-    padding: 0.5rem 3rem;
+    color: $secondary-color;
+    padding: 0.4rem 3rem 0.45rem;
     font-size: $font-size-xs;
     margin: 1rem 0;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 $gray;
+    transition: all 0.3s ease-in-out;
+    @include media('tablet') {
+        margin-top: 5rem;
+        padding: 0.4em 3rem 0.4rem;
+    }
+    @include media('desktop') {
+        &:hover {
+            box-shadow: inset 350px 0 0 0 $gray-light;
+            color: $main-color;
+        }
+        font-size: $font-size-s;
+    }
 }

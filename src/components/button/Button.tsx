@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styles from './button.module.scss';
 
 interface ButtonProps {
-    children: string;
+    children: ReactNode | string;
 }
 
 const Button: React.FC<ButtonProps> = ({ children }) => {
