@@ -8,7 +8,7 @@ const Image: React.FC = () => {
         query {
             src: file(relativePath: { eq: "hero-mobile.jpg" }) {
                 childImageSharp {
-                    fluid(quality: 90, maxWidth: 420) {
+                    fluid(quality: 100, maxWidth: 420) {
                         ...GatsbyImageSharpFluid
                         ...GatsbyImageSharpFluidLimitPresentationSize
                     }
@@ -24,6 +24,7 @@ const Image: React.FC = () => {
             className={styles.image}
             fluid={imgSrc}
             imgStyle={{ objectFit: 'cover' }}
+            alt="lady in makeup"
         />
     );
 };

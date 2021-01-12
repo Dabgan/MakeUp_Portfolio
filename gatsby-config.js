@@ -12,6 +12,14 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-plugin-transition-link`,
         {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+                fonts: [`Josefin Sans:200,400,500,700`],
+                display: 'swap',
+            },
+        },
+
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `images`,

@@ -8,6 +8,7 @@
     "@react-hook/media-query": "^1.1.1",
     "gatsby": "^2.30.1",
     "gatsby-image": "^2.9.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-manifest": "^2.10.0",
     "gatsby-plugin-offline": "^3.8.0",
     "gatsby-plugin-react-helmet": "^3.8.0",

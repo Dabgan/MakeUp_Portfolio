@@ -1,6 +1,7 @@
 .burger {
     position: fixed;
-    right: 1.5rem;
+    right: 1rem;
+    top: 1rem;
     @include flex-centered(column, space-around);
     width: 2rem;
     height: 2rem;

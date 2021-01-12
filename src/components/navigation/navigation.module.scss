@@ -31,11 +31,12 @@
     list-style: none;
     font-size: $font-size-m;
     margin: $margin-m 0;
-    font-weight: 700;
+    font-weight: $font-weight-200;
     cursor: pointer;
     &.active {
+        font-weight: $font-weight-500;
         color: $secondary-color;
-        text-shadow: 3px 3px 13px $font-color;
+        text-shadow: $shadow;
     }
     @include media('desktop') {
         font-size: $font-size-s;

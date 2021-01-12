@@ -5,6 +5,7 @@ import Hero from '../components/hero/Hero';
 import SEO from '../components/SEO/seo';
 import Image from '../components/image/Image';
 import Button from '../components/button/Button';
+import Title from '../components/title/Title';
 
 const IndexPage: React.FunctionComponent = () => {
     return (
@@ -12,9 +13,9 @@ const IndexPage: React.FunctionComponent = () => {
             <Hero>
                 <Layout>
                     <SEO title="Home" />
-                    <h1 className="title">
-                        Kinga Dąbrowska Superhero Make Up and XD
-                    </h1>
+                    <Title glowing>
+                        Kinga Dąbrowska Superior Make Up and FX
+                    </Title>
                     <Image />
                     <Button>Portfolio</Button>
                 </Layout>
