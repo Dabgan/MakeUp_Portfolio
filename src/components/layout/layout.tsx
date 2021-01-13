@@ -28,12 +28,12 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
             {({ transitionStatus }) => {
                 const tween = useTransitionState(transitionStatus);
                 return (
-                    <div className={styles.wrapper}>
+                    <div className={`${styles.wrapper}`}>
                         <Header
                             siteTitle={data.site.siteMetadata?.title || `Title`}
                         />
                         <div className={styles.container}>
-                            <main className={`${styles.main} ${tween}`}>
+                            <main className={`${styles.main}  ${tween}`}>
                                 {children}
                             </main>
                             <Footer></Footer>

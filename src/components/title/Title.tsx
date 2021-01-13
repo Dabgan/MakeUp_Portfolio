@@ -6,12 +6,9 @@ interface TitleProps {
     children: ReactNode;
 }
 
-const Title: React.FC<TitleProps> = ({ children }, glowing) => {
-    return (
-        <h1 className={`${styles.title} ${glowing ? styles.glowing : ''}`}>
-            {children}
-        </h1>
-    );
+const Title: React.FC<TitleProps> = ({ children, glowing }) => {
+    const glowingEffect = glowing ? styles.glowing : '';
+    return <h1 className={`${styles.title} ${glowingEffect}`}>{children}</h1>;
 };
 
-export default Title;
+export default React.memo(Title);

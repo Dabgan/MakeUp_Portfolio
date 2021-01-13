@@ -12,4 +12,4 @@ const Header: React.FunctionComponent<HeaderProps> = () => (
     </header>
 );
 
-export default Header;
+export default React.memo(Header);

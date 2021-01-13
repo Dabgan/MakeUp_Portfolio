@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { Link } from 'gatsby';
 
-import Layout from '../components/layout/layout'
-import SEO from '../components/SEO/seo'
+import Layout from '../components/layout/layout';
+import SEO from '../components/SEO/seo';
 
 const AboutPage: React.FunctionComponent = () => (
     <Layout>
@@ -11,6 +11,6 @@ const AboutPage: React.FunctionComponent = () => (
         <p>Welcome to about page</p>
         <Link to="/">Go back to the homepage</Link>
     </Layout>
-)
+);
 
-export default AboutPage
+export default React.memo(AboutPage);

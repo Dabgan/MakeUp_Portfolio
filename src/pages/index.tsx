@@ -43,4 +43,4 @@ const IndexPage: React.FunctionComponent = () => {
     );
 };
 
-export default IndexPage;
+export default React.memo(IndexPage);

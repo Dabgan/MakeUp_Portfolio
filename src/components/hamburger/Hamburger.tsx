@@ -20,4 +20,4 @@ const Hamburger: React.FC<HamburgerProps> = ({ toggleMenu, isActive }) => {
     );
 };
 
-export default Hamburger;
+export default React.memo(Hamburger);

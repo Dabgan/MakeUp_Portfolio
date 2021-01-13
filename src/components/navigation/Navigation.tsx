@@ -13,21 +13,21 @@ const menuItems = [
     },
     {
         name: 'Portfolio',
-        path: '/portfolio',
+        path: '/portfolio/',
     },
     {
         name: 'About',
-        path: '/about',
+        path: '/about/',
     },
     {
         name: 'Contact',
-        path: '/contact',
+        path: '/contact/',
     },
 ];
 
 const Navigation: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [locationPath, setLocationPath] = useState('');
+    const [locationPath, setLocationPath] = useState<string>();
     const tween = useCalculatePageTween();
 
     useEffect(() => {
@@ -62,4 +62,4 @@ const Navigation: React.FC = () => {
     );
 };
 
-export default Navigation;
+export default React.memo(Navigation);

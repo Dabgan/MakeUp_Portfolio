@@ -23,7 +23,6 @@
         height: auto;
         position: static;
         padding: $padding-mobile;
-        background: none;
     }
 }
 
@@ -33,6 +32,8 @@
     margin: $margin-m 0;
     font-weight: $font-weight-200;
     cursor: pointer;
+    @include flex-centered;
+
     &.active {
         font-weight: $font-weight-500;
         color: $secondary-color;
@@ -44,5 +45,6 @@
     @include media('desktop') {
         font-size: $font-size-s;
         margin: 0 $margin-l 0 0;
+        min-width: 6.7rem;
     }
 }

@@ -37,7 +37,7 @@ const Portfolio: React.FC<Articles> = ({ data }) => {
     );
 };
 
-export default Portfolio;
+export default React.memo(Portfolio);
 
 export const query = graphql`
     query {

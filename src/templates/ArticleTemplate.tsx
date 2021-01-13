@@ -40,4 +40,4 @@ export const query = graphql`
     }
 `;
 
-export default ArticleTemplate;
+export default React.memo(ArticleTemplate);

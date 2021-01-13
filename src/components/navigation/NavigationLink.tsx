@@ -44,4 +44,4 @@ const NavigationLink: React.FC<LinkProps> = ({
     );
 };
 
-export default NavigationLink;
+export default React.memo(NavigationLink);

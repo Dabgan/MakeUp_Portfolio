@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout/layout';
 import SEO from '../components/SEO/seo';
+import Title from '../components/title/Title';
 
 interface AboutDatoCms {
     data: {
@@ -15,11 +16,10 @@ interface AboutDatoCms {
 
 const AboutPage: React.FC<AboutDatoCms> = ({ data }) => {
     const { title, description } = data.about;
-
     return (
         <Layout>
             <SEO title="About Page" />
-            <h1>{title}</h1>
+            <Title glowing={false}>{title}</Title>
             <p>{description}</p>
         </Layout>
     );
@@ -33,4 +33,4 @@ export const query = graphql`
         }
     }
 `;
-export default AboutPage;
+export default React.memo(AboutPage);
