@@ -9,15 +9,20 @@
     cursor: pointer;
     box-shadow: inset 0 0 0 0 $gray;
     transition: all 0.3s ease-in-out;
+    @include media('mobile') {
+        margin: 2rem 0;
+    }
     @include media('tablet') {
         margin-top: 5rem;
         padding: 0.4em 3rem 0.4rem;
     }
     @include media('desktop') {
+        font-size: $font-size-s;
+        padding: 0.4em 5rem 0.4rem;
+
         &:hover {
-            box-shadow: inset 350px 0 0 0 $gray-light;
+            box-shadow: inset 300px 0 0 0 $gray-light;
             color: $main-color;
         }
-        font-size: $font-size-s;
     }
 }

@@ -1,0 +1,12 @@
+.container {
+    @include flex-centered(column);
+
+    @include media('tablet') {
+        max-width: 60%;
+        margin-top: 25vh;
+    }
+    @include media('desktop') {
+        max-width: 49%;
+        margin-top: 5%;
+    }
+}

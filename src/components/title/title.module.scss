@@ -3,6 +3,19 @@
     font-weight: $font-weight-200;
     text-align: center;
     margin: 0 0;
+    @include media('mobile') {
+        font-size: $font-size-sm;
+    }
+    @include media('custom', 550) {
+        max-width: 80%;
+    }
+    @include media('tablet') {
+        font-size: $font-size-l;
+    }
+    @include media('desktop') {
+        max-width: 96%;
+        font-size: $font-size-xl;
+    }
 }
 .glowing {
     text-shadow: $shadow, $shadow, $shadow;

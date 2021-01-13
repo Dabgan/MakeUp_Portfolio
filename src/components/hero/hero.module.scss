@@ -15,6 +15,10 @@
     display: none;
     @include media('tablet') {
         display: block;
+        height: 66%;
+    }
+    @include media('custom', 800) {
+        height: auto;
     }
 
     & > img {
