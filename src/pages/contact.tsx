@@ -1,16 +1,48 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import Layout from '../components/layout/layout';
 import SEO from '../components/SEO/seo';
+import Title from '../components/title/Title';
+import { graphql } from 'gatsby';
+import styles from '../assets/styles/pages/contact.module.scss';
+import Socials from '../components/socials/Socials';
 
-const AboutPage: React.FunctionComponent = () => (
-    <Layout>
-        <SEO title="Contact" />
-        <h1>Hi from the about page</h1>
-        <p>Welcome to about page</p>
-        <Link to="/">Go back to the homepage</Link>
-    </Layout>
-);
+interface ContactDatoCms {
+    data: {
+        contact: {
+            info: string;
+        };
+    };
+}
+
+const AboutPage: React.FunctionComponent<ContactDatoCms> = ({ data }) => {
+    const { info } = data.contact;
+
+    return (
+        <Layout>
+            <SEO title="Contact" />
+            <div className={styles.wrapper}>
+                <Title glowing>Contact</Title>
+                <div className={styles.information}>
+                    <div
+                        className={styles.info}
+                        dangerouslySetInnerHTML={{
+                            __html: info,
+                        }}
+                    />
+                    <Socials />
+                </div>
+            </div>
+        </Layout>
+    );
+};
+
+export const query = graphql`
+    query {
+        contact: datoCmsContact {
+            info
+        }
+    }
+`;
 
 export default React.memo(AboutPage);

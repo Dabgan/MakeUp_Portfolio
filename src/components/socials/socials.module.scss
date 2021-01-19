@@ -1,0 +1,30 @@
+.container {
+    @include flex-centered();
+    width: 100%;
+    margin-top: $margin-l;
+
+    @include media('tablet') {
+        margin-top: $margin-xl;
+    }
+    @include media('desktop') {
+        margin-top: $margin-l;
+        justify-content: flex-start;
+    }
+}
+
+.icon {
+    @include flex-centered();
+    margin: 0 $margin-l;
+    font-size: $font-size-l;
+    color: $gray;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+        color: $secondary-color;
+        transform: scale(1.05);
+    }
+
+    @include media('desktop') {
+        margin: 0 $margin-l 0 0;
+    }
+}

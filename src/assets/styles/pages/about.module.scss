@@ -8,6 +8,7 @@
     text-justify: inter-character;
     p {
         font-size: $font-size-xxs;
+        line-height: 1.45rem;
     }
 }
 
@@ -34,10 +35,6 @@
     max-width: 50%;
     padding: 0 $padding-l 0 0;
     div {
-        margin-top: $margin-m;
-    }
-    p {
-        margin-top: $margin-m;
-        line-height: 1.45rem;
+        margin-top: $margin-under-title;
     }
 }

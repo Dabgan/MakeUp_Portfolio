@@ -13,7 +13,10 @@
     height: 100%;
     padding: 1.5rem $padding-m 0;
     @include media('mobile') {
-        padding: 2rem $padding-m 0;
+        padding: 2.5rem $padding-m 0;
+    }
+    @include media('tablet') {
+        margin-top: 3rem;
     }
     @include media('desktop') {
         max-width: $content-width;
