@@ -1,11 +1,9 @@
 .title {
-    font-size: 1.62rem;
+    font-size: $font-size-l;
     font-weight: $font-weight-200;
     text-align: center;
     margin: 0 0;
-    @include media('mobile') {
-        font-size: $font-size-sm;
-    }
+
     @include media('custom', 550) {
         max-width: 80%;
     }
@@ -15,6 +13,12 @@
     @include media('desktop') {
         max-width: 96%;
         font-size: $font-size-xl;
+    }
+}
+.small {
+    font-size: 1.62rem;
+    @include media('mobile') {
+        font-size: $font-size-sm;
     }
 }
 .glowing {

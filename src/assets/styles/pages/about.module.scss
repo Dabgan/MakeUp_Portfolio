@@ -1,0 +1,43 @@
+.container {
+    width: 100%;
+}
+.wrapper {
+    @include flex-centered(column);
+    width: 100%;
+    text-align: justify;
+    text-justify: inter-character;
+    p {
+        font-size: $font-size-xxs;
+    }
+}
+
+.image {
+    width: 100%;
+    flex: 1;
+    margin: $margin 0 $margin-m;
+    @include media('custom', 550) {
+        max-width: 70%;
+        margin: $margin-l 0;
+    }
+    @include media('desktop') {
+        max-width: 40%;
+        margin: 0 0 0 $margin-m;
+    }
+}
+
+.innerWrapper {
+    @extend .wrapper;
+    @include flex-centered(row, flex-start, flex-start);
+}
+.info {
+    @include flex-centered(column, center, flex-start);
+    max-width: 50%;
+    padding: 0 $padding-l 0 0;
+    div {
+        margin-top: $margin-m;
+    }
+    p {
+        margin-top: $margin-m;
+        line-height: 1.45rem;
+    }
+}

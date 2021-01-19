@@ -1,7 +1,7 @@
 .wrapper {
     @include flex-centered(column, flex-start);
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     @include media('desktop') {
         min-height: 100vh;
         padding: 0 $padding;
@@ -11,9 +11,9 @@
 .container {
     width: 100%;
     height: 100%;
-    padding: 1.5rem $padding-mobile 0;
+    padding: 1.5rem $padding-m 0;
     @include media('mobile') {
-        padding: 2rem $padding-mobile 0;
+        padding: 2rem $padding-m 0;
     }
     @include media('desktop') {
         max-width: $content-width;
@@ -27,5 +27,6 @@
     width: 100%;
     @include media('tablet') {
         @include flex-centered(column, flex-start, flex-start);
+        padding: 0 $padding-s;
     }
 }
