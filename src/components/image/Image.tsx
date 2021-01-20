@@ -8,7 +8,7 @@ const Image: React.FC = () => {
         query {
             src: file(relativePath: { eq: "hero-mobile.jpg" }) {
                 childImageSharp {
-                    fluid(quality: 100, maxWidth: 420) {
+                    fluid(quality: 85, maxWidth: 420) {
                         ...GatsbyImageSharpFluid
                         ...GatsbyImageSharpFluidLimitPresentationSize
                     }

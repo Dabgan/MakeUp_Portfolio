@@ -15,14 +15,14 @@ const Hero: React.FC<HeroProps> = ({ children }) => {
         query {
             desktop: file(relativePath: { eq: "hero-photo.jpg" }) {
                 childImageSharp {
-                    fluid(quality: 100, maxWidth: 4160) {
+                    fluid(quality: 85, maxWidth: 2048) {
                         ...GatsbyImageSharpFluid
                     }
                 }
             }
             tablet: file(relativePath: { eq: "hero-cut.jpg" }) {
                 childImageSharp {
-                    fluid(quality: 100, maxWidth: 1248) {
+                    fluid(quality: 85, maxWidth: 1248) {
                         ...GatsbyImageSharpFluid
                     }
                 }
