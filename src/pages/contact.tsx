@@ -22,7 +22,7 @@ const AboutPage: React.FunctionComponent<ContactDatoCms> = ({ data }) => {
         <Layout>
             <SEO title="Contact" />
             <div className={styles.wrapper}>
-                <Title glowing>Contact</Title>
+                <Title>Contact</Title>
                 <div className={styles.information}>
                     <div
                         className={styles.info}

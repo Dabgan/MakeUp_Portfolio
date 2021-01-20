@@ -6,17 +6,21 @@
 
     @include media('custom', 550) {
         max-width: 80%;
+        span {
+            width: 100%;
+            display: inline-block;
+        }
     }
     @include media('tablet') {
-        font-size: $font-size-l;
+        font-size: $font-size-l !important;
     }
     @include media('desktop') {
-        max-width: 96%;
-        font-size: $font-size-xl;
+        max-width: 100% !important;
+        font-size: $font-size-xl !important;
     }
 }
 .small {
-    font-size: 1.62rem;
+    font-size: $font-size-s;
     @include media('mobile') {
         font-size: $font-size-sm;
     }

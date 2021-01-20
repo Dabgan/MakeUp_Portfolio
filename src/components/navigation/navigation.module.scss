@@ -18,21 +18,26 @@
         transform: translate(0);
     }
     @include media('desktop') {
-        transform: translate(0);
         @include flex-centered(row, flex-start);
+        padding: $padding-m;
         height: auto;
         position: static;
-        padding: $padding-m;
+        transform: translate(0);
     }
 }
 
 .navItem {
+    @include flex-centered;
     list-style: none;
     font-size: $font-size-m;
     margin: $margin-m 0;
     font-weight: $font-weight-200;
     cursor: pointer;
-    @include flex-centered;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        color: $secondary-color;
+    }
 
     &.active {
         font-weight: $font-weight-500;

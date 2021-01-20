@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout/layout';
+import Title from '../components/title/Title';
+import SEO from '../components/SEO/seo';
 
 interface Articles {
     data: {
@@ -16,14 +18,14 @@ interface Articles {
     };
 }
 
-const Portfolio: React.FC<Articles> = ({ data }) => {
-    const { edges } = data.articles;
+const Portfolio: React.FC<Articles> = () => {
+    // const { edges } = data.articles;
     return (
         <Layout>
+            <SEO title="Portfolio" />
             <div>
-                <h1>Portfolio</h1>
-                <p>Now go build something great.</p>
-                {edges.map(edge => {
+                <Title>Portfolio</Title>
+                {/* {edges.map(edge => {
                     const { id, slug, title } = edge.node;
                     return (
                         <div key={id}>
@@ -31,7 +33,7 @@ const Portfolio: React.FC<Articles> = ({ data }) => {
                             <br />
                         </div>
                     );
-                })}
+                })} */}
             </div>
         </Layout>
     );

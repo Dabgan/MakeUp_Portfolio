@@ -35,7 +35,7 @@ const AboutPage: React.FC<AboutDatoCms> = ({ data }) => {
                     {infoContainer ? (
                         <div className={styles.innerWrapper}>
                             <div className={styles.info}>
-                                <Title glowing>{title}</Title>
+                                <Title>{title}</Title>
                                 <div
                                     dangerouslySetInnerHTML={{
                                         __html: description,
@@ -46,7 +46,7 @@ const AboutPage: React.FC<AboutDatoCms> = ({ data }) => {
                         </div>
                     ) : (
                         <>
-                            <Title glowing>{title}</Title>
+                            <Title>{title}</Title>
                             <Img className={styles.image} fluid={photo.fluid} />
                             <div
                                 dangerouslySetInnerHTML={{
