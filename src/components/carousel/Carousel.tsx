@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import SwiperCore, { Navigation, Keyboard, Thumbs, Controller } from 'swiper';
+import SwiperCore, {
+    Navigation,
+    Keyboard,
+    Thumbs,
+    Controller,
+    Zoom,
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image, { FluidObject, FixedObject } from 'gatsby-image';
 
@@ -7,6 +13,7 @@ import styles from './carousel.module.scss';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/thumbs/thumbs.scss';
+import 'swiper/components/zoom/zoom.scss';
 
 interface CarouselProps {
     projects: Array<{
@@ -23,7 +30,7 @@ interface CarouselProps {
     }>;
 }
 
-SwiperCore.use([Navigation, Keyboard, Thumbs, Controller]);
+SwiperCore.use([Navigation, Keyboard, Thumbs, Controller, Zoom]);
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<null | any>(null);
@@ -40,6 +47,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 keyboard
                 grabCursor
                 slideToClickedSlide
+                zoom={{ maxRatio: 2 }}
                 // loop
 
                 breakpoints={{
