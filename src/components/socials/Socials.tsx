@@ -15,7 +15,7 @@ const Socials: React.FC = () => {
             </a>
             <a
                 className={styles.icon}
-                href="https://www.instagram.com/kingotron/"
+                href="https://www.instagram.com/makeup_superior/"
                 target="_blank"
                 rel="noreferrer"
             >

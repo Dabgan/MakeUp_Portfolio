@@ -10,9 +10,15 @@ import styles from './layout.module.scss';
 
 interface LayoutProps {
     children: React.ReactNode;
+    limitedHeight?: boolean;
+    marginTopZero?: boolean;
 }
 
-const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
+const Layout: React.FunctionComponent<LayoutProps> = ({
+    children,
+    limitedHeight,
+    marginTopZero,
+}) => {
     const data = useStaticQuery(graphql`
         query SiteTitleQuery {
             site {
@@ -23,17 +29,20 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         }
     `);
 
+    const isHeightSet = limitedHeight ? styles.limitedHeigth : '';
+    const marginTop = marginTopZero ? styles.zeroTopMargin : '';
+
     return (
         <TransitionState>
             {({ transitionStatus }) => {
                 const tween = useTransitionState(transitionStatus);
                 return (
-                    <div className={`${styles.wrapper}`}>
+                    <div className={`${styles.wrapper} ${isHeightSet} `}>
                         <Header
                             siteTitle={data.site.siteMetadata?.title || `Title`}
                         />
-                        <div className={styles.container}>
-                            <main className={`${styles.main}  ${tween}`}>
+                        <div className={`${styles.container} ${marginTop} `}>
+                            <main className={`${styles.main} ${tween}`}>
                                 {children}
                             </main>
                             <Footer></Footer>

@@ -1,39 +1,25 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Layout from '../components/layout/layout';
-import Title from '../components/title/Title';
 import SEO from '../components/SEO/seo';
+import Layout from '../components/layout/layout';
+import Carousel from '../components/carousel/Carousel';
+import styles from '../assets/styles/pages/portfolio.module.scss';
 
 interface Articles {
     data: {
-        articles: {
-            edges: Array<{
-                node: {
-                    title: string;
-                    slug: string;
-                    id: string;
-                };
-            }>;
+        projects: {
+            edges: [];
         };
     };
 }
 
-const Portfolio: React.FC<Articles> = () => {
-    // const { edges } = data.articles;
+const Portfolio: React.FC<Articles> = ({ data }) => {
+    const { edges } = data.projects;
     return (
-        <Layout>
+        <Layout limitedHeight marginTopZero>
             <SEO title="Portfolio" />
-            <div>
-                <Title>Portfolio</Title>
-                {/* {edges.map(edge => {
-                    const { id, slug, title } = edge.node;
-                    return (
-                        <div key={id}>
-                            <Link to={`./${slug}`}>{title}</Link>
-                            <br />
-                        </div>
-                    );
-                })} */}
+            <div className={styles.carouselContainer}>
+                <Carousel projects={edges}></Carousel>
             </div>
         </Layout>
     );
@@ -43,12 +29,21 @@ export default React.memo(Portfolio);
 
 export const query = graphql`
     query {
-        articles: allDatoCmsArticle {
+        projects: allDatoCmsPortfolioProject {
             edges {
                 node {
                     title
-                    slug
-                    id
+                    description
+                    image {
+                        fluid(maxWidth: 2400) {
+                            ...GatsbyDatoCmsFluid
+                        }
+                    }
+                    thumb: image {
+                        fixed(width: 150, height: 150) {
+                            ...GatsbyDatoCmsFixed
+                        }
+                    }
                 }
             }
         }

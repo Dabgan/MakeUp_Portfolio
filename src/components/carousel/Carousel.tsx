@@ -33,7 +33,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 id="swiper"
                 className={styles.swiper}
                 thumbs={{ swiper: thumbsSwiper }}
-                controller={{ control: thumbsSwiper, by: 'container' }}
+                controller={{ control: thumbsSwiper, by: `container` }}
                 spaceBetween={50}
                 touchRatio={0.5}
                 navigation
@@ -72,13 +72,9 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 watchSlidesProgress
                 spaceBetween={10}
                 slidesPerView={5}
-                slideToClickedSlide
-                touchRatio={0.5}
                 breakpoints={{
-                    768: { slidesPerView: 'auto', spaceBetween: 12 },
-                    1024: {
-                        slidesPerView: 'auto',
-                    },
+                    768: { slidesPerView: 6, spaceBetween: 14 },
+                    1024: { slidesPerView: 7 },
                 }}
             >
                 {projects.map(project => {

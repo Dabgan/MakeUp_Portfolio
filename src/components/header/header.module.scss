@@ -2,7 +2,4 @@
     @include flex-centered;
     width: 100%;
     min-height: 30px;
-    @include media('desktop') {
-        margin-top: 5rem;
-    }
 }
