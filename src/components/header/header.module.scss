@@ -2,4 +2,7 @@
     @include flex-centered;
     width: 100%;
     min-height: 30px;
+    @include media('desktop') {
+        min-height: auto;
+    }
 }

@@ -21,8 +21,7 @@ const IndexPage: React.FunctionComponent = () => {
                     <SEO title="Home" />
                     <Container>
                         <Title small>
-                            <span>Kinga Dąbrowska</span> Superhero Make Up and
-                            XD
+                            <span>Kinga Dąbrowska</span> Superior Make Up and FX
                         </Title>
                         <Image />
                         <Link

@@ -36,6 +36,7 @@
     @include media('tablet') {
         height: 140px;
         margin-bottom: $margin;
+        width: 80%;
     }
     @include media('desktop') {
         height: 100px;
