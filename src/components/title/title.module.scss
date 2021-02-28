@@ -1,12 +1,15 @@
+@import '../../assets/animations/neonFlickering.module.scss';
+
 .title {
     font-size: $font-size-l;
     font-weight: $font-weight-200;
+
     text-align: center;
     margin: 0 0;
 
     @include media('custom', 550) {
         max-width: 80%;
-        span {
+        :global(.text-block) {
             width: 100%;
             display: inline-block;
         }
@@ -27,4 +30,11 @@
 }
 .glowing {
     text-shadow: $shadow, $shadow, $shadow;
+    :global(.neon-text) {
+        animation: flicker ease-in-out 1 2.7s;
+    }
+    :global(.neon-text-delayed) {
+        animation: flicker ease-in-out 1 2.7s;
+        animation-delay: 3s;
+    }
 }

@@ -86,7 +86,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 slidesPerView={5}
                 breakpoints={{
                     768: { slidesPerView: 6, spaceBetween: 14 },
-                    1024: { slidesPerView: 7 },
+                    1024: { slidesPerView: 7, spaceBetween: 15 },
                 }}
             >
                 {projects.map(project => {

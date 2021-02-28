@@ -14,6 +14,6 @@
     }
     @include media('desktop') {
         height: 100%;
-        padding-top: $padding-m;
+        padding: $padding-m 0 $padding-s 0;
     }
 }
