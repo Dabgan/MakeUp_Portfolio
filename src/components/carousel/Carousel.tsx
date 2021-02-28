@@ -26,6 +26,7 @@ interface CarouselProps {
             thumb: {
                 fixed: FixedObject;
             };
+            position: number;
         };
     }>;
 }
@@ -34,6 +35,9 @@ SwiperCore.use([Navigation, Keyboard, Thumbs, Controller, Zoom]);
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<null | any>(null);
+
+    projects.sort((a, b) => a.node.position - b.node.position);
+
     return (
         <>
             <Swiper

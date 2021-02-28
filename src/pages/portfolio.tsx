@@ -34,6 +34,7 @@ export const query = graphql`
                 node {
                     title
                     description
+                    position
                     image {
                         fluid(maxWidth: 2400) {
                             ...GatsbyDatoCmsFluid
