@@ -31,10 +31,11 @@
 .glowing {
     text-shadow: $shadow, $shadow, $shadow;
     :global(.neon-text) {
-        animation: flicker ease-in-out 1 2.7s;
+        animation: flicker ease-in-out infinite 7s;
+        animation-delay: -2s;
     }
     :global(.neon-text-delayed) {
-        animation: flicker ease-in-out 1 2.7s;
-        animation-delay: 3s;
+        animation: flicker ease-in-out infinite 7s;
+        animation-delay: 1.5s;
     }
 }
