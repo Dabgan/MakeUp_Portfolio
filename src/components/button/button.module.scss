@@ -1,28 +1,39 @@
 .button {
-    border: 6px solid $gray;
-    border-radius: $border-radius;
-    background: inherit;
-    color: $secondary-color;
-    padding: 0.4rem 3rem 0.45rem;
-    font-size: $font-size-xs;
     margin: 1rem 0;
-    cursor: pointer;
-    box-shadow: inset 0 0 0 0 $gray;
-    transition: all 0.3s ease-in-out;
+    background: inherit;
+    border: none;
+    outline: none;
+
     @include media('mobile') {
         margin: 2rem 0;
     }
     @include media('tablet') {
         margin-top: 5rem;
-        padding: 0.4em 3rem 0.4rem;
     }
-    @include media('desktop') {
-        font-size: $font-size-s;
-        padding: 0.4em 5rem 0.4rem;
 
-        &:hover {
-            box-shadow: inset 300px 0 0 0 $gray-light;
-            color: $main-color;
+    a {
+        color: $secondary-color;
+        border: 6px solid $gray;
+        border-radius: $border-radius;
+        display: block;
+        width: 100%;
+        padding: 0.4rem 3rem 0.45rem;
+        font-size: $font-size-xs;
+        cursor: pointer;
+        box-shadow: inset 0 0 0 0 $gray;
+        transition: all 0.3s ease-in-out;
+
+        @include media('tablet') {
+            padding: 0.4em 3rem 0.4rem;
+        }
+        @include media('desktop') {
+            font-size: $font-size-s;
+            padding: 0.4em 5rem 0.4rem;
+
+            &:hover {
+                box-shadow: inset 300px 0 0 0 $gray-light;
+                color: $main-color;
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ interface AboutDatoCms {
 const AboutPage: React.FC<AboutDatoCms> = ({ data }) => {
     const { title, description, photo } = data.about;
     const matched = useMediaQuery('(min-width: 1024px)');
-    const [infoContainer, setInfoContainer] = useState<boolean>(matched);
+    const [infoContainer, setInfoContainer] = useState<boolean>(true);
 
     useEffect(() => {
         setInfoContainer(matched);

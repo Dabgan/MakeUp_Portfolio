@@ -21,22 +21,29 @@ const IndexPage: React.FunctionComponent = () => {
                     <SEO title="Home" />
                     <Container>
                         <Title small>
-                            <span>Kinga Dąbrowska</span> Superhero Make Up and
-                            XD
+                            <span className="text-block neon-text">
+                                Kinga Dąbrowska
+                            </span>{' '}
+                            Superior{' '}
+                            <span className="neon-text-delayed">Make Up </span>
+                            and FX
                         </Title>
                         <Image />
-                        <Link
-                            to="/portfolio"
-                            entry={{
-                                delay,
-                                length: entryLength,
-                            }}
-                            exit={{
-                                length: exitLength,
-                            }}
-                        >
-                            <Button>Portfolio</Button>
-                        </Link>
+
+                        <Button>
+                            <Link
+                                to="/portfolio"
+                                entry={{
+                                    delay,
+                                    length: entryLength,
+                                }}
+                                exit={{
+                                    length: exitLength,
+                                }}
+                            >
+                                Portfolio
+                            </Link>
+                        </Button>
                     </Container>
                 </Layout>
             </Hero>
