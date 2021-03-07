@@ -2,7 +2,7 @@
 
 Portfolio website made for make up artist. You can check it live [here](https://kingadabrowska.netlify.app/).
 
-![main view](https://imgur.com/a/5xKBBeS.png "main page preview")
+![main view](https://i.imgur.com/0YeV1cU.png "main page preview")
 
 ## Technologies
 
