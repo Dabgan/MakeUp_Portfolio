@@ -40,5 +40,13 @@ module.exports = {
                 apiToken: process.env.DATO_API_TOKEN,
             },
         },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Kinga Dąbrowska Make Up Artist`,
+                short_name: `Kinga Dąbrowska`,
+                icon: `src/assets/images/favicon.png`,
+            },
+        },
     ],
 };
