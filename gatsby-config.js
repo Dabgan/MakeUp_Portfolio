@@ -5,6 +5,7 @@ module.exports = {
         title: `Kinga Dąbrowska Make Up Artist`,
         description: ``,
         author: `github.com/Dabgan`,
+        previewImg: `/src/assets/images/SEOimg.png`,
     },
     plugins: [
         `gatsby-plugin-react-helmet`,

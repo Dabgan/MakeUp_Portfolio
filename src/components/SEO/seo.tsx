@@ -1,25 +1,23 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOProps {
+    author?: string;
+    title: string;
     description?: string;
     lang?: string;
     meta?: Array<{ name: string; content: string }>;
-    title: string;
+    previewImg: string;
+    seoImg: string;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
+    author,
+    title,
     description,
     lang,
-    title,
+    previewImg,
 }) => {
     const { site } = useStaticQuery(
         graphql`
@@ -29,6 +27,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                         title
                         description
                         author
+                        previewImg
                     }
                 }
             }
@@ -46,12 +45,16 @@ const SEO: React.FunctionComponent<SEOProps> = ({
             titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[
                 {
+                    property: `robots`,
+                    content: `index, follow`,
+                },
+                {
                     name: `description`,
                     content: metaDescription,
                 },
                 {
                     property: `og:title`,
-                    content: title,
+                    content: site.siteMetadata.title,
                 },
                 {
                     property: `og:description`,
@@ -62,20 +65,28 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                     content: `website`,
                 },
                 {
+                    property: `og:image`,
+                    content: previewImg || site.siteMetadata.previewImg,
+                },
+                {
                     name: `twitter:card`,
                     content: `summary`,
                 },
                 {
                     name: `twitter:creator`,
-                    content: site.siteMetadata?.author || ``,
+                    content: author || site.siteMetadata.author,
                 },
                 {
                     name: `twitter:title`,
-                    content: title,
+                    content: site.siteMetadata.title,
                 },
                 {
                     name: `twitter:description`,
                     content: metaDescription,
+                },
+                {
+                    name: `twitter:image`,
+                    content: previewImg || site.siteMetadata.previewImg,
                 },
             ]}
         />
@@ -86,6 +97,9 @@ SEO.defaultProps = {
     lang: `en`,
     meta: [],
     description: ``,
+    title: ``,
+    author: ``,
+    previewImg: ``,
 };
 
 export default React.memo(SEO);
