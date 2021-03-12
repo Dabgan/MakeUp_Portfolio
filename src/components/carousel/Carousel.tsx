@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import SwiperCore, { Navigation, Keyboard, Thumbs, Controller } from 'swiper';
+import SwiperCore, {
+    Navigation,
+    Keyboard,
+    Thumbs,
+    Controller,
+    Lazy,
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image, { FluidObject, FixedObject } from 'gatsby-image';
 
@@ -7,6 +13,7 @@ import styles from './carousel.module.scss';
 import 'swiper/swiper.scss';
 import 'swiper/components/controller/controller.scss';
 import 'swiper/components/thumbs/thumbs.scss';
+import 'swiper/components/lazy/lazy.scss';
 
 interface CarouselProps {
     projects: Array<{
@@ -24,7 +31,7 @@ interface CarouselProps {
     }>;
 }
 
-SwiperCore.use([Navigation, Keyboard, Thumbs, Controller]);
+SwiperCore.use([Navigation, Keyboard, Thumbs, Controller, Lazy]);
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<null | any>(null);
@@ -47,6 +54,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 breakpoints={{
                     1024: { slidesPerView: 1, spaceBetween: 30 },
                 }}
+                lazy={{ loadPrevNext: true, loadPrevNextAmount: 3 }}
             >
                 {projects.map(project => {
                     const { title, image } = project.node;
