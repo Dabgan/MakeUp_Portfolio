@@ -8,8 +8,7 @@ interface SEOProps {
     description?: string;
     lang?: string;
     meta?: Array<{ name: string; content: string }>;
-    previewImg: string;
-    seoImg: string;
+    previewImg?: string;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -19,7 +18,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
     lang,
     previewImg,
 }) => {
-    const { site } = useStaticQuery(
+    const { site, seoImg } = useStaticQuery(
         graphql`
             query {
                 site {
@@ -27,14 +26,25 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                         title
                         description
                         author
-                        previewImg
+                    }
+                }
+                seoImg: file(relativePath: { eq: "SEOImg.png" }) {
+                    childImageSharp {
+                        fluid(maxWidth: 400, maxHeight: 250) {
+                            ...GatsbyImageSharpFluid
+                        }
                     }
                 }
             }
         `
     );
 
-    const metaDescription = description || site.siteMetadata.description;
+    const seo = {
+        metaDescription: description || site.siteMetadata.description,
+        metaImg: previewImg || seoImg.childImageSharp.fluid.src,
+        metaAuthor: author || site.siteMetadata.author,
+        metaTitle: site.siteMetadata.title,
+    };
 
     return (
         <Helmet
@@ -50,15 +60,15 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                 },
                 {
                     name: `description`,
-                    content: metaDescription,
+                    content: seo.metaDescription,
                 },
                 {
                     property: `og:title`,
-                    content: site.siteMetadata.title,
+                    content: seo.metaTitle,
                 },
                 {
                     property: `og:description`,
-                    content: metaDescription,
+                    content: seo.metaDescription,
                 },
                 {
                     property: `og:type`,
@@ -66,7 +76,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                 },
                 {
                     property: `og:image`,
-                    content: previewImg || site.siteMetadata.previewImg,
+                    content: seo.metaImg,
                 },
                 {
                     name: `twitter:card`,
@@ -74,19 +84,19 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                 },
                 {
                     name: `twitter:creator`,
-                    content: author || site.siteMetadata.author,
+                    content: seo.metaAuthor,
                 },
                 {
                     name: `twitter:title`,
-                    content: site.siteMetadata.title,
+                    content: seo.metaTitle,
                 },
                 {
                     name: `twitter:description`,
-                    content: metaDescription,
+                    content: seo.metaDescription,
                 },
                 {
                     name: `twitter:image`,
-                    content: previewImg || site.siteMetadata.previewImg,
+                    content: seo.metaImg,
                 },
             ]}
         />

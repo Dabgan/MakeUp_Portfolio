@@ -3,9 +3,8 @@ require('dotenv').config();
 module.exports = {
     siteMetadata: {
         title: `Kinga Dąbrowska Make Up Artist`,
-        description: ``,
-        author: `github.com/Dabgan`,
-        previewImg: `/src/assets/images/SEOimg.png`,
+        description: `Superior Make Up and FX. Make up artist based in Warsaw`,
+        author: `Gabriel Daniluk - github.com/Dabgan`,
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
