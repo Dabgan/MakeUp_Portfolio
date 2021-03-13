@@ -1,7 +1,7 @@
 {
   "name": "makeup-portfolio",
   "description": "Personal website made for make up artist Kinga Dąbrowska",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Gabriel Daniluk - github.com/Dabgan",
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",

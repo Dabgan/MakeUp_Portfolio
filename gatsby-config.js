@@ -5,6 +5,7 @@ module.exports = {
         title: `Kinga Dąbrowska Make Up Artist`,
         description: `Superior Make Up and FX. Make up artist based in Warsaw`,
         author: `Gabriel Daniluk - github.com/Dabgan`,
+        siteURL: `https://kingadabrowska.netlify.app`,
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
