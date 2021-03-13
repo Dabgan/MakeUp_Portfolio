@@ -1,8 +1,8 @@
 {
   "name": "makeup-portfolio",
   "description": "Personal website made for make up artist Kinga Dąbrowska",
-  "version": "1.0.0",
-  "author": "Gabriel Danilu <gabriel.danilukk@gmail.com>",
+  "version": "1.1.1",
+  "author": "Gabriel Daniluk - github.com/Dabgan",
   "dependencies": {
     "@hot-loader/react-dom": "^17.0.1",
     "@react-hook/media-query": "^1.1.1",
@@ -59,9 +59,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/Dabgan/MakeUp_Portfolio"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/Dabgan/MakeUp_Portfolio/issues"
   }
 }

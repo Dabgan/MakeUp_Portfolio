@@ -32,7 +32,7 @@ const IndexPage: React.FunctionComponent = () => {
 
                         <Button>
                             <Link
-                                to="/portfolio"
+                                to="/portfolio/"
                                 entry={{
                                     delay,
                                     length: entryLength,

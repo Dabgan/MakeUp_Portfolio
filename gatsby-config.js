@@ -3,8 +3,9 @@ require('dotenv').config();
 module.exports = {
     siteMetadata: {
         title: `Kinga Dąbrowska Make Up Artist`,
-        description: ``,
-        author: `github.com/Dabgan`,
+        description: `Superior Make Up and FX. Make up artist based in Warsaw`,
+        author: `Gabriel Daniluk - github.com/Dabgan`,
+        siteURL: `https://kingadabrowska.netlify.app`,
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
@@ -14,7 +15,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-fonts`,
             options: {
-                fonts: [`Josefin Sans:200,400,500,700`],
+                fonts: [`Josefin Sans:200,400,500`],
                 display: 'swap',
             },
         },
@@ -38,6 +39,14 @@ module.exports = {
             resolve: `gatsby-source-datocms`,
             options: {
                 apiToken: process.env.DATO_API_TOKEN,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-manifest`,
+            options: {
+                name: `Kinga Dąbrowska Make Up Artist`,
+                short_name: `Kinga Dąbrowska`,
+                icon: `src/assets/images/favicon.png`,
             },
         },
     ],

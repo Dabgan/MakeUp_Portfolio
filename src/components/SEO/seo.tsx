@@ -1,27 +1,24 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOProps {
+    author?: string;
+    title: string;
     description?: string;
     lang?: string;
     meta?: Array<{ name: string; content: string }>;
-    title: string;
+    previewImg?: string;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
+    author,
+    title,
     description,
     lang,
-    title,
+    previewImg,
 }) => {
-    const { site } = useStaticQuery(
+    const { site, seoImg } = useStaticQuery(
         graphql`
             query {
                 site {
@@ -31,11 +28,23 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                         author
                     }
                 }
+                seoImg: file(relativePath: { eq: "SEOImg.png" }) {
+                    childImageSharp {
+                        fluid(maxWidth: 400, maxHeight: 250) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
             }
         `
     );
 
-    const metaDescription = description || site.siteMetadata.description;
+    const seo = {
+        metaDescription: description || site.siteMetadata.description,
+        metaImg: previewImg || seoImg.childImageSharp.fluid.src,
+        metaAuthor: author || site.siteMetadata.author,
+        metaTitle: site.siteMetadata.title,
+    };
 
     return (
         <Helmet
@@ -46,20 +55,28 @@ const SEO: React.FunctionComponent<SEOProps> = ({
             titleTemplate={`%s | ${site.siteMetadata.title}`}
             meta={[
                 {
+                    property: `robots`,
+                    content: `index, follow`,
+                },
+                {
                     name: `description`,
-                    content: metaDescription,
+                    content: seo.metaDescription,
                 },
                 {
                     property: `og:title`,
-                    content: title,
+                    content: seo.metaTitle,
                 },
                 {
                     property: `og:description`,
-                    content: metaDescription,
+                    content: seo.metaDescription,
                 },
                 {
                     property: `og:type`,
                     content: `website`,
+                },
+                {
+                    property: `og:image`,
+                    content: seo.metaImg,
                 },
                 {
                     name: `twitter:card`,
@@ -67,15 +84,19 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                 },
                 {
                     name: `twitter:creator`,
-                    content: site.siteMetadata?.author || ``,
+                    content: seo.metaAuthor,
                 },
                 {
                     name: `twitter:title`,
-                    content: title,
+                    content: seo.metaTitle,
                 },
                 {
                     name: `twitter:description`,
-                    content: metaDescription,
+                    content: seo.metaDescription,
+                },
+                {
+                    name: `twitter:image`,
+                    content: seo.metaImg,
                 },
             ]}
         />
@@ -86,6 +107,9 @@ SEO.defaultProps = {
     lang: `en`,
     meta: [],
     description: ``,
+    title: ``,
+    author: ``,
+    previewImg: ``,
 };
 
 export default React.memo(SEO);
