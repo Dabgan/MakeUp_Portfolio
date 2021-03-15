@@ -9,6 +9,7 @@
         margin-bottom: $margin-m;
         margin-top: 0;
     }
+    position: absolute;
 }
 .slide {
     @include flex-centered;
@@ -130,4 +131,43 @@
     .swiper-button-lock {
         display: none;
     }
+}
+
+/* ---------------------------------------------------
+    fullscreen changes    
+----------------------------------------------------- */
+
+.closeBtn {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 2;
+    // border: 2px solid #f11b1b;
+}
+.closeBtnClosed {
+    display: none;
+}
+
+.swiperFullScreen {
+    position: absolute !important;
+    margin: 0 0 0 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    // obliczyć dolny padding jako thumbs container + padding górny taki sam
+    // padding: 20px 0 85px !important;
+    background: $main-color !important;
+    // border: 2px solid #069cc8 !important;
+}
+
+.thumbsContainerFullScreen {
+    position: absolute !important;
+    display: none !important;
+    bottom: 0 !important;
+    height: 50px !important;
+    padding: 5px 5px !important;
+    width: 25% !important;
+    border: none !important;
 }
