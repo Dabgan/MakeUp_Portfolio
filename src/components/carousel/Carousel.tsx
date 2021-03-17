@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import SwiperCore, {
     Navigation,
     Keyboard,
@@ -35,39 +35,62 @@ interface CarouselProps {
 SwiperCore.use([Navigation, Keyboard, Thumbs, Controller, Lazy]);
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
-    const [thumbsSwiper, setThumbsSwiper] = useState<null | any>(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | undefined>();
     const [fullScreen, setFullScreen] = useState<boolean>(false);
-    const fullScreenSwiper = fullScreen ? styles.swiperFullScreen : '';
-    const fullScreenThumbContainer = fullScreen
-        ? styles.thumbsContainerFullScreen
-        : '';
-    const fullScreenBtn = fullScreen ? styles.closeBtn : styles.closeBtnClosed;
-
-    const spaceBetween = fullScreen ? 5 : 15;
 
     projects.sort((a, b) => a.node.position - b.node.position);
 
-    const enterFullScreenMode = () => {
-        setFullScreen(true);
+    const getFullScreenClass = (elem: string) => {
+        const chooseClass = (fullClass: string, closedClass?: string) => {
+            return fullScreen ? fullClass : closedClass || '';
+        };
+
+        switch (elem) {
+            case 'swiper':
+                return chooseClass(styles.swiperFullScreen);
+            case 'thumbs':
+                return chooseClass(styles.thumbsContainerFullScreen);
+            case 'btn':
+                return chooseClass(styles.closeBtn, styles.closeBtnClosed);
+            default:
+                return;
+        }
     };
 
-    const exitFullScreenMode = () => {
-        setFullScreen(false);
+    const handleKeyPress = (key?: string | number) => {
+        return key && key === 27 ? setFullScreen(false) : null;
+    };
+
+    const handleClick = (e?: MouseEvent<SVGElement | HTMLElement>) => {
+        if (e) {
+            if ((e.target as HTMLElement).tagName === 'IMG') {
+                setFullScreen(true);
+            } else if (
+                (e.target as SVGElement).tagName === 'svg' ||
+                (e.target as SVGElement).tagName === 'path'
+            ) {
+                setFullScreen(false);
+            }
+        }
     };
 
     return (
         <>
-            <IoMdClose className={fullScreenBtn} onClick={exitFullScreenMode} />
+            <IoMdClose
+                className={getFullScreenClass('btn')}
+                onClick={e => handleClick(e)}
+            />
             <Swiper
                 id="swiper"
-                className={`${styles.swiper} ${fullScreenSwiper}`}
+                onKeyPress={(event, key) => handleKeyPress(key)}
+                className={`${styles.swiper} ${getFullScreenClass('swiper')}`}
                 thumbs={{ swiper: thumbsSwiper }}
                 controller={{ control: thumbsSwiper, by: `container` }}
                 spaceBetween={50}
-                touchRatio={0.5}
+                touchRatio={0.3}
                 navigation
                 keyboard
-                grabCursor
+                // grabCursor
                 resizeObserver
                 slideToClickedSlide
                 breakpoints={{
@@ -80,7 +103,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
 
                     return (
                         <SwiperSlide
-                            onDoubleClick={enterFullScreenMode}
+                            onClick={e => handleClick(e)}
                             key={title}
                             className={styles.slide}
                         >
@@ -99,7 +122,9 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
 
             <Swiper
                 id="thumbs"
-                className={`${styles.thumbsContainer} ${fullScreenThumbContainer}`}
+                className={`${styles.thumbsContainer} ${getFullScreenClass(
+                    'thumbs'
+                )}`}
                 onSwiper={setThumbsSwiper}
                 watchSlidesVisibility
                 watchSlidesProgress
@@ -109,7 +134,7 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 resizeObserver
                 breakpoints={{
                     768: { slidesPerView: 6, spaceBetween: 14 },
-                    1024: { slidesPerView: 7, spaceBetween: spaceBetween },
+                    1024: { slidesPerView: 7, spaceBetween: 15 },
                 }}
             >
                 {projects.map(project => {
