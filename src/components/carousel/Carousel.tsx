@@ -90,7 +90,6 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 touchRatio={0.3}
                 navigation
                 keyboard
-                // grabCursor
                 resizeObserver
                 slideToClickedSlide
                 breakpoints={{
