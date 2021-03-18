@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { useEffect, MouseEvent, useState } from 'react';
 import SwiperCore, {
     Navigation,
     Keyboard,
@@ -9,6 +9,7 @@ import SwiperCore, {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image, { FluidObject, FixedObject } from 'gatsby-image';
 import { IoMdClose } from 'react-icons/io';
+import { useMediaQuery } from '@react-hook/media-query';
 
 import styles from './carousel.module.scss';
 import 'swiper/swiper.scss';
@@ -37,6 +38,17 @@ SwiperCore.use([Navigation, Keyboard, Thumbs, Controller, Lazy]);
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
     const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | undefined>();
     const [fullScreen, setFullScreen] = useState<boolean>(false);
+    const [counter, setCounter] = useState({
+        counterLength: projects.length,
+        counterIndex: 1,
+    });
+    const matched = useMediaQuery('(min-width: 1024px)');
+
+    useEffect(() => {
+        if (!matched) {
+            setFullScreen(matched);
+        }
+    }, [matched]);
 
     projects.sort((a, b) => a.node.position - b.node.position);
 
@@ -49,9 +61,11 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
             case 'swiper':
                 return chooseClass(styles.swiperFullScreen);
             case 'thumbs':
-                return chooseClass(styles.thumbsContainerFullScreen);
+                return chooseClass(styles.hideElement);
             case 'btn':
-                return chooseClass(styles.closeBtn, styles.closeBtnClosed);
+                return chooseClass(styles.closeBtn, styles.hideElement);
+            case 'counter':
+                return chooseClass(styles.counter, styles.hideElement);
             default:
                 return;
         }
@@ -80,7 +94,20 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                 className={getFullScreenClass('btn')}
                 onClick={e => handleClick(e)}
             />
+
+            <div
+                className={`${styles.counter} ${getFullScreenClass('counter')}`}
+            >
+                {`${counter.counterIndex} / ${counter.counterLength}`}
+            </div>
+
             <Swiper
+                onRealIndexChange={e =>
+                    setCounter({
+                        counterIndex: e.activeIndex + 1,
+                        counterLength: 8,
+                    })
+                }
                 id="swiper"
                 onKeyPress={(event, key) => handleKeyPress(key)}
                 className={`${styles.swiper} ${getFullScreenClass('swiper')}`}

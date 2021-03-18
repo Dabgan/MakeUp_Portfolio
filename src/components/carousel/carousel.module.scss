@@ -1,6 +1,7 @@
 .swiper {
     height: 100%;
     width: 100%;
+    user-select: none;
     @include media('mobile') {
         margin-bottom: $margin;
         margin-top: $margin;
@@ -21,6 +22,9 @@
     max-height: 100%;
     width: 100%;
     height: calc(100% - 2.5rem);
+    img {
+        pointer-events: none;
+    }
 
     @include media('desktop') {
         height: 100%;
@@ -31,6 +35,7 @@
             margin-left: auto;
             margin-right: auto;
             cursor: pointer;
+            pointer-events: initial;
         }
     }
 }
@@ -144,39 +149,40 @@
     fullscreen changes    
 ----------------------------------------------------- */
 
-.closeBtn {
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 3rem;
-    cursor: pointer;
-    z-index: 2;
-    transition: color 0.1s ease-in-out;
-    &:hover {
+@include media('desktop') {
+    .counter {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 1rem;
+        z-index: 2;
+        transition: color 0.1s ease-in-out;
         color: $secondary-color;
     }
+    .closeBtn {
+        display: block;
+        position: absolute;
+        top: 13px;
+        right: 20px;
+        font-size: 3rem;
+        cursor: pointer;
+        z-index: 2;
+        transition: color 0.1s ease-in-out;
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+    .swiperFullScreen {
+        position: absolute !important;
+        margin: 0 0 0 0 !important;
+        top: 0;
+        left: 0;
+        padding: 15px 0 15px !important;
+        background: $main-color;
+    }
 }
-.closeBtnClosed {
+
+.hideElement {
     display: none;
-}
-
-.swiperFullScreen {
-    position: absolute !important;
-    margin: 0 0 0 0 !important;
-    top: 0;
-    left: 0;
-    // w przypadku dodania miniaturek na dole obliczyć dolny padding jako thumbs container + padding górny taki sam
-    padding: 20px 0 20px !important;
-    background: $main-color;
-}
-
-.thumbsContainerFullScreen {
-    display: none !important;
-    // position: absolute !important;
-    // bottom: 0 !important;
-    // height: 50px !important;
-    // padding: 5px 5px !important;
-    // width: 25% !important;
-    // border: none !important;
 }
