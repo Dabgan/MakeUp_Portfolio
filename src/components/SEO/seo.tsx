@@ -30,7 +30,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
                 }
                 seoImg: file(relativePath: { eq: "SEOImg.png" }) {
                     childImageSharp {
-                        fluid(maxWidth: 400, maxHeight: 250) {
+                        fluid {
                             ...GatsbyImageSharpFluid
                         }
                     }

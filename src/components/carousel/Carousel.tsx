@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, MouseEvent, useState } from 'react';
 import SwiperCore, {
     Navigation,
     Keyboard,
@@ -8,6 +8,8 @@ import SwiperCore, {
 } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image, { FluidObject, FixedObject } from 'gatsby-image';
+import { IoMdClose } from 'react-icons/io';
+import { useMediaQuery } from '@react-hook/media-query';
 
 import styles from './carousel.module.scss';
 import 'swiper/swiper.scss';
@@ -34,22 +36,88 @@ interface CarouselProps {
 SwiperCore.use([Navigation, Keyboard, Thumbs, Controller, Lazy]);
 
 const Carousel: React.FC<CarouselProps> = ({ projects }) => {
-    const [thumbsSwiper, setThumbsSwiper] = useState<null | any>(null);
+    const [thumbsSwiper, setThumbsSwiper] = useState<SwiperCore | undefined>();
+    const [fullScreen, setFullScreen] = useState<boolean>(false);
+    const [counter, setCounter] = useState({
+        counterLength: projects.length,
+        counterIndex: 1,
+    });
+    const matched = useMediaQuery('(min-width: 1024px)');
+
+    useEffect(() => {
+        if (!matched) {
+            setFullScreen(matched);
+        }
+    }, [matched]);
 
     projects.sort((a, b) => a.node.position - b.node.position);
 
+    const getFullScreenClass = (elem: string) => {
+        const chooseClass = (fullClass: string, closedClass?: string) => {
+            return fullScreen ? fullClass : closedClass || '';
+        };
+
+        switch (elem) {
+            case 'swiper':
+                return chooseClass(styles.swiperFullScreen);
+            case 'thumbs':
+                return chooseClass(styles.hideElement);
+            case 'btn':
+                return chooseClass(styles.closeBtn, styles.hideElement);
+            case 'counter':
+                return chooseClass(styles.counter, styles.hideElement);
+            default:
+                return;
+        }
+    };
+
+    const handleKeyPress = (key?: string | number) => {
+        return key && key === 27 ? setFullScreen(false) : null;
+    };
+
+    const handleClick = (e?: MouseEvent<SVGElement | HTMLElement>) => {
+        if (e) {
+            if ((e.target as HTMLElement).tagName === 'IMG') {
+                setFullScreen(true);
+            } else if (
+                (e.target as SVGElement).tagName === 'svg' ||
+                (e.target as SVGElement).tagName === 'path'
+            ) {
+                setFullScreen(false);
+            }
+        }
+    };
+
     return (
         <>
+            <IoMdClose
+                className={getFullScreenClass('btn')}
+                onClick={e => handleClick(e)}
+            />
+
+            <div
+                className={`${styles.counter} ${getFullScreenClass('counter')}`}
+            >
+                {`${counter.counterIndex} / ${counter.counterLength}`}
+            </div>
+
             <Swiper
+                onRealIndexChange={e =>
+                    setCounter({
+                        counterIndex: e.activeIndex + 1,
+                        counterLength: 8,
+                    })
+                }
                 id="swiper"
-                className={styles.swiper}
+                onKeyPress={(event, key) => handleKeyPress(key)}
+                className={`${styles.swiper} ${getFullScreenClass('swiper')}`}
                 thumbs={{ swiper: thumbsSwiper }}
                 controller={{ control: thumbsSwiper, by: `container` }}
                 spaceBetween={50}
-                touchRatio={0.5}
+                touchRatio={0.3}
                 navigation
                 keyboard
-                grabCursor
+                resizeObserver
                 slideToClickedSlide
                 breakpoints={{
                     1024: { slidesPerView: 1, spaceBetween: 30 },
@@ -60,7 +128,11 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
                     const { title, image } = project.node;
 
                     return (
-                        <SwiperSlide key={title} className={styles.slide}>
+                        <SwiperSlide
+                            onClick={e => handleClick(e)}
+                            key={title}
+                            className={styles.slide}
+                        >
                             <Image
                                 className={styles.image}
                                 fluid={image.fluid}
@@ -76,12 +148,16 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
 
             <Swiper
                 id="thumbs"
-                className={styles.thumbsContainer}
+                className={`${styles.thumbsContainer} ${getFullScreenClass(
+                    'thumbs'
+                )}`}
                 onSwiper={setThumbsSwiper}
                 watchSlidesVisibility
                 watchSlidesProgress
                 spaceBetween={10}
                 slidesPerView={5}
+                updateOnWindowResize
+                resizeObserver
                 breakpoints={{
                     768: { slidesPerView: 6, spaceBetween: 14 },
                     1024: { slidesPerView: 7, spaceBetween: 15 },
