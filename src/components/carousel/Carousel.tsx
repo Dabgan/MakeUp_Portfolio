@@ -104,8 +104,8 @@ const Carousel: React.FC<CarouselProps> = ({ projects }) => {
             <Swiper
                 onRealIndexChange={e =>
                     setCounter({
+                        ...counter,
                         counterIndex: e.activeIndex + 1,
-                        counterLength: 8,
                     })
                 }
                 id="swiper"
