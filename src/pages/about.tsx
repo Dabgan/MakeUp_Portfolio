@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 import Img, { GatsbyImageFluidProps } from 'gatsby-image';
 import { useMediaQuery } from '@react-hook/media-query';
 
-import Layout from '../components/layout/layout';
-import SEO from '../components/SEO/seo';
+import Layout from '../components/layout/Layout';
+import SEO from '../components/SEO/Seo';
 import Title from '../components/title/Title';
 import styles from '../assets/styles/pages/about.module.scss';
 

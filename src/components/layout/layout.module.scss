@@ -5,12 +5,12 @@
     height: 100%;
 
     @include media('desktop') {
-        padding: $padding-xl $padding 0;
+        padding: $padding-xl 0 0;
     }
 }
 
-.limitedHeigth {
-    height: 100vh;
+.limitedHeight {
+    height: 90vh;
 }
 
 .container {
@@ -28,8 +28,9 @@
 
     @include media('desktop') {
         max-width: $content-width;
-        height: calc(100% - 59px);
+        height: calc(100% - 60px);
         margin-top: $margin-xl;
+        padding: 0rem ($padding-m + $padding) 0;
     }
 }
 .zeroTopMargin {

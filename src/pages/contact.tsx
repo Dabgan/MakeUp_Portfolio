@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from '../components/layout/layout';
-import SEO from '../components/SEO/seo';
+import Layout from '../components/layout/Layout';
+import SEO from '../components/SEO/Seo';
 import Title from '../components/title/Title';
 import { graphql } from 'gatsby';
 import styles from '../assets/styles/pages/contact.module.scss';

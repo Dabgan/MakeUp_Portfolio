@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ children }) => {
                 return (
                     <div className={`${styles.parent} ${tween}`}>
                         <Img
-                            className={styles.bgimage}
+                            className={styles.bgImage}
                             fluid={imagesStack}
                             title="hero background"
                         />

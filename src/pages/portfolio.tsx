@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import SEO from '../components/SEO/seo';
-import Layout from '../components/layout/layout';
+import SEO from '../components/SEO/Seo';
+import Layout from '../components/layout/Layout';
 import Carousel from '../components/carousel/Carousel';
 import styles from '../assets/styles/pages/portfolio.module.scss';
 
