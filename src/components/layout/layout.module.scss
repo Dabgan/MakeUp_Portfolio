@@ -5,11 +5,11 @@
     height: 100%;
 
     @include media('desktop') {
-        padding: $padding-xl $padding 0;
+        padding: $padding-xl 0 0;
     }
 }
 
-.limitedHeigth {
+.limitedHeight {
     height: 100vh;
 }
 
@@ -30,6 +30,7 @@
         max-width: $content-width;
         height: calc(100% - 59px);
         margin-top: $margin-xl;
+        padding: 0rem ($padding-m + $padding) 0;
     }
 }
 .zeroTopMargin {

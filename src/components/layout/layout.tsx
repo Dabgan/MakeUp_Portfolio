@@ -29,7 +29,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
         }
     `);
 
-    const isHeightSet = limitedHeight ? styles.limitedHeigth : '';
+    const isHeightSet = limitedHeight ? styles.limitedHeight : '';
     const marginTop = marginTopZero ? styles.zeroTopMargin : '';
 
     return (

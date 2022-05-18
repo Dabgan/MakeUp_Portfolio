@@ -1,13 +1,13 @@
 import React from 'react';
 import Navigation from '../navigation/Navigation';
-import mystyles from './header.module.scss';
+import myStyles from './header.module.scss';
 
 interface HeaderProps {
     siteTitle: string;
 }
 
 const Header: React.FunctionComponent<HeaderProps> = () => (
-    <header className={mystyles.header}>
+    <header className={myStyles.header}>
         <Navigation />
     </header>
 );
