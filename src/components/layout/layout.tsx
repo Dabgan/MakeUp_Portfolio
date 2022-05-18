@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { TransitionState } from 'gatsby-plugin-transition-link';
 import useTransitionState from '../../hooks/useTransitionState';
 
-import Header from '../header/header';
+import Header from '../header/Header';
 import Footer from '../footer/Footer';
 
 import styles from './layout.module.scss';

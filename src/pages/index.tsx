@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout/Layout';
 import Hero from '../components/hero/Hero';
 
-import SEO from '../components/SEO/seo';
+import SEO from '../components/SEO/Seo';
 import Image from '../components/image/Image';
 import Button from '../components/button/Button';
 import Title from '../components/title/Title';
